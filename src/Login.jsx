@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { auth } from "./firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -19,6 +19,17 @@ const Login = () => {
       setNotice("You entered a wrong username or password.");
     }
   };
+
+  const googleProvider = new googleProvider();
+
+const handleLoginWithGoogle = async () => {
+  try {
+    await signInWithPopup(FirebaseAuth, googleProvider);
+    navigate("./profile");
+  } catch (e) {
+    alert(e.message);
+  }
+};
 
   return (
     <div className="container">
@@ -59,7 +70,7 @@ const Login = () => {
               Submit
             </button>
             <button type="button" >
-            {/* onClick={handleLoginWithGoogle} */}
+            onClick={handleLoginWithGoogle}
               Google
             </button>
           </div>
