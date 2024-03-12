@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
-import { loginWithCredentials, logoutFirebase, onAuthStateHasChanged, signInWithCredentials, singInWithGoogle } from '../firebase/providers'
+import { loginWithCredentials, logoutFirebase, onAuthStateHasChanged, signInWithCredentials, singInWithGoogle } from '../firebase/auth'
 
 // export interface AuthStateContext {
 //     userId: string | null
