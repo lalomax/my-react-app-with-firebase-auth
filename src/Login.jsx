@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { auth } from "./firebase";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -20,11 +20,11 @@ const Login = () => {
     }
   };
 
-  const googleProvider = new googleProvider();
+  const googleProvider = new GoogleAuthProvider();
 
 const handleLoginWithGoogle = async () => {
   try {
-    await signInWithPopup(FirebaseAuth, googleProvider);
+    await signInWithPopup(auth, googleProvider);
     navigate("./profile");
   } catch (e) {
     alert(e.message);
@@ -69,8 +69,8 @@ const handleLoginWithGoogle = async () => {
             >
               Submit
             </button>
-            <button type="button" >
-            onClick={handleLoginWithGoogle}
+            <button type="button" onClick={handleLoginWithGoogle} >
+            
               Google
             </button>
           </div>
